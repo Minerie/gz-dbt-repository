@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+   - name: raw
+     schema: gz_raw_data
+     tables: 
+       - name: sales
+         identifier: raw_gz_sales
+         description: Sales of Greenweez / We renamed a column for more clarity
+         tests:
+          - unique:
+              column_name: "orders_id || '-' || pdt_id"
+       - name: product
+         identifier: raw_gz_product
+         description: List of GreenWeez's products / Change type and name of a column
+         columns:
+           - name: products_id
+             tests:
+                - unique        
+       - name: ship
+         identifier: raw_gz_ship
+         description: List of shipping fee of GreenWeez'product / change type of a column, avoiding conflict
+         columns:
+           - name: orders_id
+             tests:
+               - unique
+                   
+
