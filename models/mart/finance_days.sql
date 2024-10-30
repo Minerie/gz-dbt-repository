@@ -1,3 +1,5 @@
+{{ config(materialized=table) }}
+
 Select
     date_date,
     Count(Distinct orders_id) AS Total_nbr_transac,         -- Variable nécessaire : Orders_id
